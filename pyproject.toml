@@ -55,6 +55,9 @@ profile = "black"
 
 [tool.mypy]
 ignore_missing_imports = "True"
+exclude = [
+  "^build/",
+]
 
 [tool.pylint.main]
 ignore-patterns = [
