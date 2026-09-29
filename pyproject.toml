@@ -60,3 +60,6 @@ ignore_missing_imports = "True"
 ignore-patterns = [
   "_version.py",
 ]
+ignore-paths = [
+  "build",
+]
