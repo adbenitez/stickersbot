@@ -101,12 +101,12 @@ class SignalStickers:
                     break
         return packs
 
-    def search_html(self, addr: str, query: str) -> str:
+    def search_html(self, query: str) -> str:
         html = ""
         for pack in self.search(query):
             url = _get_pack_url(pack["meta"]["id"], pack["meta"]["key"])
-            more_url = f"mailto:{addr}?body=/info+{quote_plus(url)}"
-            url = f"mailto:{addr}?body={quote_plus(url)}"
+            more_url = f"mailto:?body=/info+{quote_plus(url)}"
+            url = f"mailto:?body={quote_plus(url)}"
             title = pack["manifest"].get("title", "NO TITLE")
             author = pack["manifest"].get("author", "ANONYMOUS")
             tags = ", ".join(_get_tags(pack))

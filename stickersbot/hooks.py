@@ -84,7 +84,7 @@ def on_message(bot: Bot, accid: int, event: NewMsgEvent) -> None:
 
     bot.rpc.markseen_msgs(accid, [msg.id])
 
-    if msg.file_mime and msg.file_mime.lower().startswith("image/"):
+    if msg.file and msg.file_mime and msg.file_mime.lower().startswith("image/"):
         if msg.file_mime.lower().split("/")[-1] in ("png", "jpg", "jpeg"):
             with TemporaryDirectory() as tmp_dir:
                 path = extract_sticker(bot, msg.file, tmp_dir)
@@ -110,8 +110,7 @@ def on_message(bot: Bot, accid: int, event: NewMsgEvent) -> None:
             text = f"❌ No sticker found for: {msg.text!r}"
             bot.rpc.send_msg(accid, msg.chat_id, MessageData(text=text))
     elif msg.text:
-        selfaddr = bot.rpc.get_config(accid, "configured_addr")
-        html = signal.search_html(selfaddr, msg.text)
+        html = signal.search_html(msg.text)
         if html:
             text = f"Results for: {msg.text!r}"
             bot.rpc.send_msg(accid, msg.chat_id, MessageData(text=text, html=html))

@@ -63,3 +63,10 @@ ignore-patterns = [
 ignore-paths = [
   "build",
 ]
+[tool.pylint."messages control"]
+disable = [
+  "missing-function-docstring",
+  "missing-module-docstring",
+  "line-too-long",
+  "broad-exception-caught",
+]
