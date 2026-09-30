@@ -10,9 +10,9 @@ from urllib.parse import quote, quote_plus
 import anyio
 from cachelib import BaseCache, NullCache
 from emoji import demojize
-from signalstickers_client import StickersClient
-from signalstickers_client.models.sticker_pack import StickerPack
 
+from .signalstickers_client import StickersClient
+from .signalstickers_client.models.sticker_pack import StickerPack
 from .util import session
 
 
