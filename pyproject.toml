@@ -59,6 +59,11 @@ packages = ["stickersbot"]
 
 [tool.isort]
 profile = "black"
+skip_glob = ["stickersbot/signalstickers_client/*"]
+
+[tool.black]
+extend-exclude = "/stickersbot/signalstickers_client/"
+target-version = ["py310", "py314"]
 
 [tool.mypy]
 ignore_missing_imports = "True"
